@@ -1,0 +1,14 @@
+.metadata
+*.tmp
+*.bak
+.settings/
+.classpath
+.project
+target/
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
