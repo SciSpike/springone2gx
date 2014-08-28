@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.springone2gx.dsc.demo.test.support;
+package com.springone2gx.sdc.demo.test.support;
 
 import static org.springframework.cassandra.core.keyspace.CreateKeyspaceSpecification.createKeyspace;
 
