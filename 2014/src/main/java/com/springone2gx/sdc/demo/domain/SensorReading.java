@@ -9,8 +9,12 @@ import org.springframework.data.cassandra.mapping.Table;
 @Table
 public class SensorReading {
 
-	@PrimaryKeyColumn(ordinal = 0, type = PrimaryKeyType.PARTITIONED) private String sensorId;
-	@PrimaryKeyColumn(ordinal = 0) private Date time;
+	@PrimaryKeyColumn(ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+	private String sensorId;
+
+	@PrimaryKeyColumn(ordinal = 0)
+	private Date time;
+
 	private String data;
 
 	@SuppressWarnings("unused")

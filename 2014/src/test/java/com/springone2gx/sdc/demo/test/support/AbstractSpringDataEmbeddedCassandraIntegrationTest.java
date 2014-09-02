@@ -31,7 +31,8 @@ public abstract class AbstractSpringDataEmbeddedCassandraIntegrationTest extends
 
 	public Logger log = LoggerFactory.getLogger(getClass());
 
-	@Autowired public CassandraOperations template;
+	@Autowired
+	public CassandraOperations template;
 
 	public void deleteAllEntities() {
 

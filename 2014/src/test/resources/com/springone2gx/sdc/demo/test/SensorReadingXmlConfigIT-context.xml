@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cass="http://www.springframework.org/schema/data/cassandra"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/cassandra http://www.springframework.org/schema/data/cassandra/spring-cassandra.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath:/spring-data-cassandra-basic.xml" />
+
+	<cass:cluster port="${cassandra.native_transport_port}">
+		<cass:keyspace name="#{randomKeyspaceName}" action="CREATE"
+			durable-writes="true">
+		</cass:keyspace>
+	</cass:cluster>
+
+	<cass:session keyspace-name="#{randomKeyspaceName}"
+		schema-action="RECREATE" />
+
+	<cass:mapping entity-base-packages="com.springone2gx.sdc.demo.domain" />
+
+	<cass:repositories base-package="com.springone2gx.sdc.demo.repo" />
+</beans>

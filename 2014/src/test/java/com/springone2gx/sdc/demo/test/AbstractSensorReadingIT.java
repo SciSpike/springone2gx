@@ -20,7 +20,8 @@ import com.springone2gx.sdc.demo.test.support.AbstractSpringDataEmbeddedCassandr
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class AbstractSensorReadingIT extends AbstractSpringDataEmbeddedCassandraIntegrationTest {
 
-	@Autowired SensorReadingRepository repo;
+	@Autowired
+	SensorReadingRepository repo;
 
 	@Before
 	public void beforeEach() {
