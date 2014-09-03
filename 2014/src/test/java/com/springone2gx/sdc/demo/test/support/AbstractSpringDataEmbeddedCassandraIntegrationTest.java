@@ -15,6 +15,8 @@
  */
 package com.springone2gx.sdc.demo.test.support;
 
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,15 @@ public abstract class AbstractSpringDataEmbeddedCassandraIntegrationTest extends
 	static {
 		SpringCassandraBuildProperties props = new SpringCassandraBuildProperties();
 		CASSANDRA_NATIVE_PORT = props.getCassandraPort();
+	}
+
+	public static String uuid() {
+		return uuid(false);
+	}
+
+	public static String uuid(boolean removeDashes) {
+		String string = UUID.randomUUID().toString();
+		return removeDashes ? string.replace("-", "") : string;
 	}
 
 	public Logger log = LoggerFactory.getLogger(getClass());
