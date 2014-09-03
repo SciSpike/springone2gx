@@ -45,11 +45,11 @@ public abstract class AbstractSensorReadingIT extends AbstractSpringDataEmbedded
 		String data = uuid();
 		repo.save(new SensorReading(id, time, data));
 
-		SensorReading found = repo.findOne(id("sensorId", id).with("time", time));
+		SensorReading found = repo.findOne(id().with("sensorId", id).with("timestamp", time));
 		assertNotNull(found);
 
 		assertEquals(id, found.getSensorId());
-		assertEquals(time, found.getTime());
+		assertEquals(time, found.getTimestamp());
 		assertEquals(data, found.getData());
 	}
 
@@ -83,11 +83,15 @@ public abstract class AbstractSensorReadingIT extends AbstractSpringDataEmbedded
 				counts.put(sensor, counts.get(sensor) + 1);
 			}
 		}
-		template.ingest("INSERT INTO sensorreading (sensorid, time, data) VALUES (?, ?, ?)", rows);
+		template.ingest("INSERT INTO sensorreading (sensorid, timestamp, data) VALUES (?, ?, ?)", rows);
 
-		try {
-			Thread.sleep(1000); // HACK
-		} catch (InterruptedException e) {}
+		long count = 0;
+		while ((count = template.count(SensorReading.class)) != rows.size()) {
+			System.out.println(String.format("entity count of %s is not yet %s; waiting...", count, rows.size()));
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {}
+		}
 
 		for (Sensor sensor : Sensor.values()) {
 			List<SensorReading> readings = repo.findSensorReadingsInDateRange(sensor.name(), today, tomorrow);

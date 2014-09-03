@@ -10,6 +10,6 @@ import com.springone2gx.sdc.demo.domain.SensorReading;
 
 public interface SensorReadingRepository extends CassandraRepository<SensorReading> {
 
-	@Query("SELECT * FROM sensorreading WHERE sensorid = ?0 AND time >= ?1 AND time < ?2")
+	@Query("SELECT * FROM sensorreading WHERE sensorid = ?0 AND timestamp >= ?1 AND timestamp < ?2")
 	List<SensorReading> findSensorReadingsInDateRange(String sensorId, Date beginInclusive, Date endExclusive);
 }

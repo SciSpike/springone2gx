@@ -13,7 +13,7 @@ public class SensorReading {
 	private String sensorId;
 
 	@PrimaryKeyColumn(ordinal = 0)
-	private Date time;
+	private Date timestamp;
 
 	private String data;
 
@@ -22,7 +22,7 @@ public class SensorReading {
 
 	public SensorReading(String sensorId, Date time, String data) {
 		setSensorId(sensorId);
-		setTime(time);
+		setTimestamp(time);
 		setData(data);
 	}
 
@@ -34,12 +34,12 @@ public class SensorReading {
 		this.sensorId = sensorId;
 	}
 
-	public Date getTime() {
-		return time == null ? null : new Date(time.getTime());
+	public Date getTimestamp() {
+		return timestamp == null ? null : new Date(timestamp.getTime());
 	}
 
-	public void setTime(Date date) {
-		this.time = (date == null ? null : new Date(date.getTime()));
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = (timestamp == null ? null : new Date(timestamp.getTime()));
 	}
 
 	public String getData() {
