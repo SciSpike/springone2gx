@@ -1,9 +1,9 @@
 package com.springone2gx.sdc.demo.test;
 
+import static com.springone2gx.sdc.demo.test.Sensor.randomSensor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.data.cassandra.repository.support.BasicMapId.id;
-import static com.springone2gx.sdc.demo.test.Sensor.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.StringUtils;
 
 import com.springone2gx.sdc.demo.domain.SensorReading;
 import com.springone2gx.sdc.demo.repo.SensorReadingRepository;
