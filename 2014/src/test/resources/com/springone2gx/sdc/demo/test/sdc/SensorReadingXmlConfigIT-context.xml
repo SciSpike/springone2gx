@@ -6,6 +6,15 @@
 
 	<import resource="classpath:/integration-test-context.xml" />
 	
+	<cass:cluster port="${cassandra.native_transport_port}">
+		<cass:keyspace name="#{randomKeyspaceName}" action="CREATE"
+			durable-writes="true">
+		</cass:keyspace>
+	</cass:cluster>
+
+	<cass:session keyspace-name="#{randomKeyspaceName}"
+		schema-action="RECREATE" />
+
 	<cass:mapping entity-base-packages="com.springone2gx.sdc.demo.domain" />
 
 	<cass:repositories base-package="com.springone2gx.sdc.demo.repo" />

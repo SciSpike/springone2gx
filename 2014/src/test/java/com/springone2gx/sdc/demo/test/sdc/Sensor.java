@@ -1,4 +1,4 @@
-package com.springone2gx.sdc.demo.test;
+package com.springone2gx.sdc.demo.test.sdc;
 
 import java.util.Random;
 

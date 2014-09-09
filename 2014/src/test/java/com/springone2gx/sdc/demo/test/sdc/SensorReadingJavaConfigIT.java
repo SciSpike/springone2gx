@@ -1,4 +1,4 @@
-package com.springone2gx.sdc.demo.test;
+package com.springone2gx.sdc.demo.test.sdc;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;

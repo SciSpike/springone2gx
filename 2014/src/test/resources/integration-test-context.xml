@@ -14,13 +14,4 @@
 
 	<context:property-placeholder
 		location="classpath:/integration-test.properties" />
-
-	<cass:cluster port="${cassandra.native_transport_port}">
-		<cass:keyspace name="#{randomKeyspaceName}" action="CREATE"
-			durable-writes="true">
-		</cass:keyspace>
-	</cass:cluster>
-
-	<cass:session keyspace-name="#{randomKeyspaceName}"
-		schema-action="RECREATE" />
 </beans>

@@ -1,6 +1,6 @@
-package com.springone2gx.sdc.demo.test;
+package com.springone2gx.sdc.demo.test.sdc;
 
-import static com.springone2gx.sdc.demo.test.Sensor.randomSensor;
+import static com.springone2gx.sdc.demo.test.sdc.Sensor.randomSensor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.data.cassandra.repository.support.BasicMapId.id;
@@ -85,13 +85,17 @@ public abstract class AbstractSensorReadingIT extends AbstractSpringDataEmbedded
 		}
 		template.ingest("INSERT INTO sensorreading (sensorid, timestamp, data) VALUES (?, ?, ?)", rows);
 
-		long count = 0;
-		while ((count = template.count(SensorReading.class)) != rows.size()) {
-			System.out.println(String.format("entity count of %s is not yet %s; waiting...", count, rows.size()));
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {}
-		}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {}
+
+		// long count = 0;
+		// while ((count = template.count(SensorReading.class)) != rows.size()) {
+		// System.out.println(String.format("entity count of %s is not yet %s; waiting...", count, rows.size()));
+		// try {
+		// Thread.sleep(100);
+		// } catch (InterruptedException e) {}
+		// }
 
 		for (Sensor sensor : Sensor.values()) {
 			List<SensorReading> readings = repo.findSensorReadingsInDateRange(sensor.name(), today, tomorrow);

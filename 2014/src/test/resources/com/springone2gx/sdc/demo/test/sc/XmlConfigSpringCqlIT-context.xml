@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cql="http://www.springframework.org/schema/cql"
+	xsi:schemaLocation="http://www.springframework.org/schema/cql http://www.springframework.org/schema/data/cassandra/spring-cql.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath:/integration-test-context.xml" />
+
+	<cql:cluster port="${cassandra.native_transport_port}">
+		<cql:keyspace name="#{randomKeyspaceName}" action="CREATE"
+			durable-writes="true">
+		</cql:keyspace>
+	</cql:cluster>
+
+	<cql:session keyspace-name="#{randomKeyspaceName}" />
+
+	<cql:template />
+</beans>
